@@ -15,8 +15,9 @@ This directory contains the project's durable technical and product decisions.
 |---|---|---|
 | [ADR-0001](0001-mobile-platform-scope.md) | Android and iOS are the supported platforms | Accepted |
 | [ADR-0002](0002-framework-and-ui-direction.md) | Flutter/Dart with a selective Forui-first UI direction | Accepted |
+| [ADR-0003](0003-delivery-model.md) | Use a GitHub template repository as the primary delivery model | Proposed |
 
-These decisions record the direction already established for this project. They do not approve unreviewed package versions, minimum OS versions, architecture, or individual component choices.
+These decisions record the established direction and the current proposal. Proposed decisions are not implementation approval. None of these records approves unreviewed package versions, minimum OS versions, architecture, or individual component choices.
 
 ## Rules
 
