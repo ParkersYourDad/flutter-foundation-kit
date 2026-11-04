@@ -1,6 +1,6 @@
 # Platform and Toolchain Baseline
 
-**Status:** Baseline accepted; local Windows verification pending  
+**Status:** Baseline accepted; GitHub-hosted scaffold verification pending  
 **Checked:** 2026-11-04  
 **Related decision:** ADR-0007  
 **Related issue:** [Phase 01 — Platform and toolchain](https://github.com/ParkersYourDad/flutter-foundation-kit/issues/2)
@@ -149,6 +149,6 @@ Phase 01 can close after:
 - [x] SwiftPM default and CocoaPods fallback risk are documented.
 - [x] Forui's minimum Flutter compatibility is checked.
 - [x] CI host policy and version pinning policy are documented.
-- [ ] The one-time Windows environment report is reviewed and local Android toolchain blockers are resolved or explicitly recorded.
+- [ ] GitHub Actions successfully generates the official Android/iOS Flutter scaffold, passes analysis/tests, builds Android debug, and builds iOS without code signing.
 
 Until the final item is reviewed, Phase 01 remains open.

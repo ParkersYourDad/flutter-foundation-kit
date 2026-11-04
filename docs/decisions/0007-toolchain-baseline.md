@@ -4,11 +4,11 @@
 - **Date:** 2026-11-04
 - **Decision owner:** Repository owner
 - **Workstream:** Phase 01 — Platform and toolchain
-- **Local verification:** Pending one read-only Windows environment report
+- **Verification:** Pending GitHub Actions scaffold generation and Android/iOS build smoke tests
 
 ## Context
 
-The starter must be reproducible across the user's Windows Android development environment and macOS iOS CI. Independent version selection for Flutter, Gradle, Android Gradle Plugin, Kotlin, and native SDKs creates avoidable compatibility risk.
+The starter must be created, built, and verified directly in GitHub without requiring a local development environment. GitHub-hosted macOS runners provide Android and iOS build environments. Independent version selection for Flutter, Gradle, Android Gradle Plugin, Kotlin, and native SDKs creates avoidable compatibility risk.
 
 ## Options considered
 
