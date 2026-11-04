@@ -1,22 +1,21 @@
 # System Map
 
-**Status:** Planning map — not an implementation commitment.
+**Status:** Active delivery plan  
+**Current workstream:** 01 — Platform and toolchain
 
-This map keeps the full problem space visible while preserving one-workstream-at-a-time delivery. A capability is included in the shipped core only after its requirement and cost are justified.
+Each workstream defines its boundaries, decisions, implementation, verification, and closure evidence. A candidate capability ships in core only when its requirement and maintenance cost are justified.
 
-## Workstream order
-
-| Order | Workstream | Main questions / outputs | Status |
+| Order | Workstream | Main outputs | Status |
 |---:|---|---|---|
-| 00 | Product scope and principles | Product definition, platform boundary, core vs optional, quality expectations | **Active** |
-| 01 | Platform and toolchain | Flutter/Dart channel and constraints, Android/iOS minimums, Xcode, JDK, Gradle, build modes | Not started |
-| 02 | Dependency policy and package selection | Package inventory, version compatibility, license, maintenance, security, upgrade policy | Not started |
+| 00 | Product scope and principles | Product definition, platform floor, delivery, core/optional boundary, quality and maintenance policy | **Closed** |
+| 01 | Platform and toolchain | Flutter/Dart constraints, Android/iOS minimums, Gradle/JDK/Xcode/SDK matrix, build and CI environment | **Active** |
+| 02 | Dependency policy and package selection | Package inventory, versions, compatibility, license, maintenance, security, upgrade policy | Not started |
 | 03 | Architecture and project structure | Feature boundaries, layers, dependency direction, shared code, naming and file conventions | Not started |
 | 04 | App bootstrap and lifecycle | Startup, app composition, lifecycle, configuration, error boundaries | Not started |
 | 05 | UI foundation and Forui integration | Widget inventory, adoption/customization/extension/build rules, Material/Cupertino boundaries | Not started |
 | 06 | Design system and theming | Tokens, typography, semantic colors, theme modes, component styling, branding flexibility | Not started |
 | 07 | Navigation and routing | Route model, nested navigation, back behavior, deep links, modal navigation | Not started |
-| 08 | State, async behavior, and DI | Local vs shared state, async flows, provider lifecycle, dependency ownership | Not started |
+| 08 | State, async behavior, and dependency injection | Local/shared state, async flows, provider lifecycle, dependency ownership | Not started |
 | 09 | Localization, preferences, and persistence | Locale, RTL/LTR, user overrides, storage boundaries, migrations | Not started |
 | 10 | Forms and input | Validation, focus, keyboard, formatting, submission and error feedback | Not started |
 | 11 | Motion and interaction | Motion principles, transitions, gestures, haptics, reduced motion | Not started |
@@ -27,22 +26,14 @@ This map keeps the full problem space visible while preserving one-workstream-at
 
 ## Cross-cutting requirements
 
-These are considered throughout the relevant workstreams rather than implemented as isolated afterthoughts:
+Accessibility, localization/bidirectional text, performance/resource lifecycle, privacy/security, failure/recovery states, documentation/upgradeability, Android/iOS parity, and evidence provenance must be considered in every relevant workstream.
 
-- Accessibility.
-- Localization and bidirectional text.
-- Performance and resource lifecycle.
-- Privacy and security.
-- Failure and recovery behavior.
-- Documentation and upgradeability.
-- Android/iOS parity and platform-specific differences.
+## Rules
 
-## How to use this map
-
-1. Work in the listed dependency order unless a documented dependency requires a change.
-2. Do not implement future workstreams early merely because a package or idea is available.
+1. Follow the dependency order unless an accepted decision justifies a documented change.
+2. Do not implement future workstreams early just because a package or idea is available.
 3. Update status only when evidence supports the change.
-4. Record scope changes and reorderings in the decision log.
-5. Remove a candidate capability if its value does not justify its complexity.
+4. Record scope changes and reordering in the decision register.
+5. Remove capabilities whose value does not justify their complexity.
 
-The system map is a navigation aid, not a promise to ship every possible feature.
+This map is a navigation aid, not a promise to ship every possible feature.

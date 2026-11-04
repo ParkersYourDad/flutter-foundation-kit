@@ -1,189 +1,224 @@
 # Product Scope and Product Principles
 
-**Status:** Draft — active workstream  
-**Last reviewed:** 2026-11-04  
-**Decision authority:** Repository owner  
-**Purpose:** Define what this kit is, who it serves, what it includes, and what it deliberately excludes before implementation begins.
-
----
+**Status:** Accepted  
+**Accepted:** 2026-11-04  
+**Decision authority:** Repository owner
 
 ## 1. Product definition
 
-Flutter Foundation Kit is a reusable, project-neutral starting point for building maintainable Flutter applications on Android and iOS.
+Flutter Foundation Kit is a reusable, project-neutral starting point for maintainable Flutter applications on Android and iOS.
 
-It provides a coherent baseline for application structure, UI foundations, navigation, state, localization, platform behavior, quality, and developer workflow. It should reduce repeated setup and avoid making each new project rediscover the same engineering decisions.
+The deliverable is a **GitHub Template Repository** containing a complete, runnable Flutter application foundation, engineering conventions, selected UI foundations, automated quality checks, documentation, and scoped optional recipes.
 
-It is **not**:
-- A general-purpose Flutter framework.
-- A complete business application.
-- A backend or service platform.
-- A package collection assembled for quantity.
-- A rigid architecture that every application must follow regardless of complexity.
+It is not a general-purpose Flutter framework, published package ecosystem, complete business application, backend/service platform, package collection assembled for quantity, or rigid architecture imposed on every app.
 
-## 2. Intended users and use cases
+## 2. Intended user and outcomes
 
-### Primary user
+The primary user is a developer or small product team starting a Flutter mobile app who wants a dependable, understandable baseline instead of repeating common setup.
 
-A developer or small product team starting a new Flutter mobile application and wanting a reliable, understandable foundation rather than rebuilding common infrastructure.
+The kit should make it easier to:
+- generate a new app repository from the template;
+- start from a runnable foundation with coherent engineering and UI conventions;
+- reuse foundations without inheriting application-specific business logic;
+- add integrations only when the product needs them;
+- understand why each dependency and abstraction exists;
+- upgrade deliberately through documented releases and migration notes.
 
-### Intended use cases
+Generated repositories are independent application snapshots; they do not automatically receive future template changes.
 
-- Starting a new Android/iOS Flutter application.
-- Reusing established UI and engineering conventions across projects.
-- Adding optional capabilities when a specific application requires them.
-- Understanding why a dependency or architectural pattern exists.
-- Upgrading the foundation without relying on undocumented assumptions.
+## 3. Supported platforms and minimum OS
 
-### Not a target
+Supported application platforms:
+- Android phones and compatible Android mobile devices.
+- iPhone and compatible iOS devices.
 
-The kit is not intended to solve application-specific domain problems or replace the need for product-level architecture decisions.
+Web, Windows, macOS, and Linux are outside the supported application scope.
 
-## 3. Confirmed product constraints
+Initial minimum device OS:
+| Platform | Minimum | Basis |
+|---|---:|---|
+| Android | API 24 / Android 7.0 | Flutter 3.47 supported floor on 2026-11-04 |
+| iOS | iOS 15 | Flutter 3.47 supported floor on 2026-11-04 |
 
-The following constraints are confirmed and should not be silently changed:
+These are minimum device OS versions, not compile SDK or store target API versions. A required dependency may raise the floor; it must not be lowered below the selected Flutter release's supported range. Revalidate against the exact Flutter stable version and required native dependencies before the first release.
 
-| Area | Constraint |
+### Separate build and store requirements
+
+- Android minimum OS, compile SDK, and target SDK are distinct values.
+- Android compile/target SDK should follow the selected Flutter stable release and current store submission rules rather than stale hardcoded values.
+- As of 2026-11-04, Google Play requires new apps and updates to target Android 16 / API 36 or higher from 2026-08-31.
+- As of 2026-11-04, Apple requires uploads to use Xcode 26 or later with an iOS 26 SDK. Apple's listed minimum OS submission threshold is iOS 13 or later; this kit's iOS 15 floor is driven by Flutter support, not Apple's lower submission threshold.
+- Revalidate store rules immediately before each stable release.
+
+## 4. Confirmed product constraints
+
+| Area | Decision |
 |---|---|
-| Framework | Flutter |
-| Language | Dart |
-| Platforms | Android and iOS |
-| Reuse model | Project-neutral foundation |
-| UI component direction | Forui-first, with selective adoption |
-| Component strategy | Reuse → customize → extend → build only when needed |
-| Default product services | No backend, auth, analytics, push, AI, monetization, or business-specific integration |
-| Code generation | Not a default; exceptions require explicit justification |
+| Framework/language | Flutter / Dart |
+| Platforms | Android and iOS only |
+| Delivery | GitHub Template Repository |
+| Product form | Project-neutral runnable application starter |
+| UI direction | Selective Forui-first component foundation |
+| Component method | Use → customize → extend → build only for a verified gap |
+| Localization | Arabic and English in baseline |
+| Locale default | Device locale; independently persisted user override |
+| Theme default | System appearance; independently persisted System/Light/Dark override |
+| Visual direction | Neutral, premium-minimal, low-clutter, replaceable through tokens |
+| Default integrations | No backend, auth, remote DB, analytics, ads, push, AI, payments, or app-specific logic |
+| Code generation | No package-driven app source generation by default |
+| License | MIT for original repository material; external assets keep their licenses |
 
-A constraint does not automatically settle every implementation detail. For example, selecting Forui as the UI component foundation does not mean every Forui widget must be used or that its current release is automatically suitable.
+Forui is a strategic direction, not blanket approval of every widget, API, release, native dependency, or component.
 
-## 4. Product outcomes
+## 5. Core template scope
 
-The kit should make it easier to achieve:
+The runnable template is expected to include these foundations, with implementation details decided in their own workstreams:
 
-1. **Fast, safe project start:** a new app can begin without repeating avoidable setup.
-2. **Consistency:** shared design, behavior, and engineering rules have one source of truth.
-3. **Comprehensibility:** developers can understand the structure without learning an unnecessary internal framework.
-4. **Adaptability:** applications can change branding, features, and product architecture without fighting the starter.
-5. **Quality:** accessibility, responsive behavior, localization, error handling, performance, and testing are built into the working model.
-6. **Maintainability:** dependencies and decisions can be updated deliberately, with known impact.
+1. **App foundation:** startup/bootstrap, lifecycle, configuration boundaries, and intentional first-launch/loading behavior.
+2. **Project structure:** pragmatic feature-oriented organization, clear responsibility boundaries, and no unnecessary layers.
+3. **UI foundation:** Forui integration and a reviewed set of shared components; native Flutter, Material, or Cupertino primitives may be used deliberately when suitable.
+4. **Design system:** semantic tokens, typography, spacing, shape, borders, themes, and replaceable neutral defaults.
+5. **Navigation and state foundations:** selected after current documentation and compatibility/trade-off review.
+6. **Localization and preferences:** Arabic/English, RTL/LTR, system defaults, independent persisted overrides, and local preference persistence.
+7. **Forms and feedback:** shared input conventions and appropriate loading, success, empty, and error patterns.
+8. **Motion and interaction:** consistent, purposeful motion and micro-interactions with reduced-motion behavior.
+9. **Adaptive/accessibility:** safe areas, keyboard insets, responsive layouts, text scaling, semantics, screen-reader support, contrast, and usable touch targets.
+10. **Quality:** formatting, static analysis, tests, platform build smoke checks, and focused regression coverage.
+11. **Developer experience:** concise setup/use/upgrade docs, naming conventions, useful scripts, and CI workflows.
 
-## 5. Scope candidates
+Exact packages, versions, routing/state/DI choices, persistence mechanism, folder structure, font, and component inventory remain deferred to their named workstreams.
 
-These are areas to evaluate. Their presence in this list does not mean they must all ship in the core template.
+## 6. Optional recipes — not installed by default
 
-- Application bootstrap and lifecycle.
-- Project structure and feature composition.
-- Dependency management and dependency injection.
-- Navigation and routing.
-- State management and asynchronous state.
-- Forui integration and component conventions.
-- Design tokens, typography, color, and theming.
-- Arabic/English localization and RTL/LTR support.
-- User preferences and local persistence.
-- Forms and input handling.
-- Motion, transitions, gestures, and haptics.
-- Adaptive layouts and accessibility.
-- Platform integration and permissions.
-- Error handling, diagnostics, and logging.
-- Testing, performance, security, and reliability.
-- Developer tooling, documentation, automation, and release workflow.
+- Backend clients and remote APIs.
+- Authentication and account management.
+- Remote databases and synchronization.
+- Analytics, advertising, and crash-reporting vendors.
+- Push notifications.
+- AI providers and cloud inference.
+- Payments, subscriptions, and monetization.
+- Camera, gallery, barcode, maps, and location.
+- Biometrics and other sensitive device capabilities.
+- Background tasks and advanced offline synchronization.
+- Product-specific domain features.
 
-Every candidate must have a clear user benefit, an owner, a scope boundary, and an acceptance method before implementation.
+Each optional capability requires a real use case and review of its security/privacy impact, license, maintenance cost, native requirements, and reuse boundary. Local persistence for theme/locale preferences is core; a general-purpose app database is not.
 
-## 6. Explicit non-goals for the default foundation
+## 7. Locale and theme behavior
 
-Unless a specific project opts in, the starter must not ship with:
+### Locale
+- Device locale is the default.
+- Arabic and English are supported in the baseline.
+- Settings allow System, Arabic, or English.
+- System restores device-driven behavior.
+- Locale and theme overrides are independent and persisted separately.
+- Effective locale determines text/layout direction where appropriate.
+- Dates, numbers, currency, and pluralization use locale-aware formatting.
+- Adding another language must not require editing feature widgets individually.
 
-- A default backend or database.
-- Authentication or account management.
-- Analytics, advertising, or crash-reporting vendor integration.
-- Push notification behavior.
-- AI features or provider credentials.
-- Payments, subscriptions, or monetization.
-- App-specific domain models, demo business flows, or fake services.
-- Large sets of optional packages that are not used.
-- Generated application source code without an approved reason.
-- A fixed brand identity that cannot be cleanly replaced.
+### Theme
+- System appearance is the default.
+- Settings allow System, Light, or Dark.
+- System restores device-driven appearance.
+- Theme and locale preferences are independent and persisted.
 
-Optional integrations may be documented as recipes or separate modules after their need, security, privacy, license, maintenance, and platform implications are assessed.
+No language/theme choice is forced during onboarding. Persistence, state, and localization implementation are selected later.
 
-## 7. Product quality principles
+## 8. Visual and interaction principles
 
-### 7.1 Engineering restraint
+- Restrained, premium-minimal defaults designed for readability and comfort.
+- Neutral palette; no permanent brand accent.
+- Prioritize hierarchy, readable text, whitespace, alignment, and subtle separation.
+- Avoid default-looking Material styling, unnecessary cards, heavy elevation, decorative shadows, glows, and indiscriminate gradients/glass effects.
+- Centralize genuine visual decisions in replaceable tokens; branding must be replaceable without rewriting component internals.
+- Default font must support Arabic and Latin well; exact font and license are deferred.
+- Motion communicates hierarchy, state change, continuity, or feedback; do not animate everything or slow routine tasks.
+- Respect reduced-motion settings.
+- Initial launch must be intentional and quick; no fake progress or prolonged splash masking startup work.
 
-- Add a layer only when it owns a real responsibility or prevents concrete coupling.
-- Do not introduce a repository, service, manager, provider, interface, or wrapper solely to satisfy a pattern.
-- Keep dependencies explicit and ownership understandable.
-- Avoid hidden global state and duplicate sources of truth.
+## 9. Quality, accessibility, security, and testing baseline
 
-### 7.2 UI and interaction quality
+### Accessibility/adaptive behavior
 
-- Establish a consistent design system rather than scattering visual values.
-- Prefer calm hierarchy, readable typography, useful whitespace, and restrained surfaces.
-- Avoid unnecessary elevation, decorative effects, and repetitive cards.
-- Motion must explain state changes or provide meaningful feedback; it must not make routine actions slower.
-- Support reduced-motion preferences where relevant.
-- Never trade accessibility or responsiveness for visual polish.
+Core components and screens must account for semantics, contrast, visible focus, touch targets, text scaling, bidirectional text, keyboard/focus behavior, reduced motion, small/large mobile screens, safe areas, and keyboard insets.
 
-### 7.3 Resilience
+### Initial CI and test gates
 
-- Define loading, success, empty, and failure behavior where a feature has asynchronous or variable data.
-- Treat cancellation, lifecycle changes, retries, and partial failure deliberately.
-- Do not hide errors or silently substitute fake data.
+The first template release must have automated PR and main-branch checks for:
+- Dart formatting;
+- Flutter static analysis with no unapproved diagnostics;
+- unit and widget tests;
+- Android debug build smoke check;
+- iOS simulator build smoke check on a macOS runner.
 
-### 7.4 Evidence and provenance
+Testing policy:
+- unit tests for deterministic logic;
+- widget tests for shared components, state changes, and loading/error/empty behavior;
+- integration tests for important end-to-end journeys and native integrations when introduced;
+- selective golden tests for stable shared UI surfaces, not every screen;
+- no arbitrary global coverage percentage that encourages meaningless tests.
 
-- Prefer official documentation and primary sources.
-- Record the source and review date for version-sensitive decisions.
-- Separate verified facts from recommendations and assumptions.
-- Never claim a package is maintained, secure, compatible, or production-ready without evidence.
+Exact CI actions, runner images, and pinned SDK versions are deferred to platform/toolchain and developer-experience workstreams.
 
-## 8. Dependency acceptance policy
+### Security/privacy baseline
 
-A package may be adopted only after reviewing, where applicable:
+- No secrets, signing keys, credentials, or private environment values in the repository.
+- No data collection, tracking, analytics, or permission prompts by default.
+- Ask for sensitive permissions only when a user-triggered capability needs them.
+- Optional integrations require privacy, data-flow, permission, platform, and dependency review.
+- This charter does not claim OWASP or other certification compliance.
 
-- Whether Flutter/Dart already provides a suitable capability.
-- Maintainer identity and official documentation.
-- Current stable version and release history.
-- Maintenance activity and unresolved issue patterns.
-- Flutter and Dart SDK constraints.
-- Android and iOS support and native setup requirements.
-- License and redistribution implications.
-- Transitive dependencies and dependency footprint.
-- Security advisories and sensitive data behavior.
-- Migration cost, lock-in, and exit strategy.
-- Whether the package solves a real starter-kit requirement.
+## 10. Dependency and code-generation policy
 
-Popularity or download count alone is not sufficient evidence.
+Before adoption, review the built-in Flutter/Dart alternative, maintainer/docs/release history, stable version and SDK constraints, Android/iOS support, native setup, maintenance, license, transitive footprint, security, migration cost, lock-in, and actual requirement.
 
-## 9. Open questions to close in this workstream
+Popularity or download count alone is insufficient.
 
-The following questions remain open and must be resolved before this scope is marked closed:
+Package-driven application-source generation is not a default. An exception requires a material benefit, an accepted decision, tooling/CI requirements, and documented regeneration and upgrade behavior. Flutter-required registrants and tooling outputs do not justify adding a general code-generation stack.
 
-- What is the minimum supported Android version, and what evidence determines it?
-- What is the minimum supported iOS version, and what evidence determines it?
-- Is the deliverable a cloneable starter repository, a template repository, a reusable package set, or a deliberately bounded combination?
-- Which capabilities belong in the default generated app, and which are optional recipes?
-- What is the intended visual default, and how much of it must be replaceable without editing component internals?
-- Which localization policy is mandatory for every project versus optional?
-- What is the minimum acceptable testing and CI baseline?
-- What support and upgrade policy should the kit promise?
-- What repository license is appropriate? Until selected, no reuse license is granted.
+## 11. Maintenance, versioning, and upgrades
 
-These questions will be answered one at a time with evidence and recorded decisions. They are not to be guessed in implementation.
+- This repository is the canonical maintained template.
+- A generated repository is an independent snapshot; template changes do not propagate automatically.
+- Tag stable template releases using Semantic Versioning as a communication convention: major for breaking template changes, minor for backward-compatible capability additions, patch for fixes.
+- Each release includes a changelog and migration instructions when needed.
+- Maintain the latest stable template release. No automatic updates or indefinite backports are promised for generated apps.
+- Enable GitHub's template flag only after the first candidate passes the complete release checklist.
+- Revalidate upstream toolchain and store requirements before each release.
 
-## 10. Acceptance criteria for closing this workstream
+## 12. License
 
-This document may be marked **Accepted** only when:
+Original repository material is licensed under MIT. This permits reuse and modification subject to retaining copyright/license notices. It does not grant trademark rights or replace licenses for third-party dependencies, fonts, icons, images, or other imported assets. Third-party material must retain its required license and attribution.
 
-- [ ] Product definition and intended user are unambiguous.
-- [ ] Android/iOS platform boundaries and minimum OS policy are defined.
-- [ ] Deliverable type and expected reuse workflow are defined.
-- [ ] Core versus optional capability boundary is explicit.
-- [ ] Design flexibility and product-neutrality requirements are defined.
-- [ ] Localization and accessibility expectations are defined at scope level.
-- [ ] Quality and maintenance expectations are defined.
-- [ ] License decision is made or explicitly deferred with a documented consequence.
-- [ ] Open questions are resolved, deferred with a reason, or moved to a later named workstream.
-- [ ] Related decision records and README status are updated.
+## 13. Deferred implementation decisions
 
-**Until every required item is resolved, this workstream remains open.**
+The following remain open and must be finalized before relevant implementation:
+- exact Flutter stable version and Dart SDK constraint;
+- Android Gradle Plugin, Gradle, Kotlin, JDK, Android SDK, NDK, and Xcode versions;
+- exact package inventory, Forui version, and other dependency versions;
+- state management, routing, DI, and persistence selections;
+- final project structure and architecture layers;
+- exact design tokens, typography scale, and font/assets;
+- Forui component-by-component adoption/customization/extension/build inventory;
+- CI action versions, runner images, and secret handling;
+- release automation and signing workflow.
+
+Closing product scope does not approve any of these implementation details.
+
+## 14. Phase 00 acceptance
+
+- [x] Product definition and intended user are unambiguous.
+- [x] Platforms and OS floors are evidence-based.
+- [x] Delivery model and generated-repository behavior are defined.
+- [x] Core versus optional scope is explicit.
+- [x] Visual direction and branding replaceability are defined.
+- [x] Locale/theme and RTL/LTR behavior are defined.
+- [x] Accessibility/adaptive expectations are defined.
+- [x] Quality, testing, CI, security, and privacy expectations are defined.
+- [x] Dependency and code-generation policies are defined.
+- [x] Maintenance, versioning, and upgrade expectations are defined.
+- [x] License is selected and included.
+- [x] Remaining technical decisions are assigned to named workstreams.
+- [x] README, system map, decision register, and issue tracker are synchronized.
+
+**Phase 00 is closed.** Reopen only under the conditions in the working agreement.
