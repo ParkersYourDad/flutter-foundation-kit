@@ -3,12 +3,12 @@
 **Status:** Active delivery plan  
 **Current workstream:** 01 — Platform and toolchain
 
-Each workstream defines its boundaries, decisions, implementation, verification, and closure evidence. A candidate capability ships in core only when its requirement and maintenance cost are justified.
+Each workstream defines its boundaries, decisions, implementation, verification, and closure evidence. A capability ships in core only when its requirement and maintenance cost are justified.
 
 | Order | Workstream | Main outputs | Status |
 |---:|---|---|---|
 | 00 | Product scope and principles | Product definition, platform floor, delivery, core/optional boundary, quality and maintenance policy | **Closed** |
-| 01 | Platform and toolchain | Flutter/Dart constraints, Android/iOS minimums, Gradle/JDK/Xcode/SDK matrix, build and CI environment | **Active** |
+| 01 | Platform and toolchain | Flutter/Dart, Android Gradle/SDK/JDK matrix, Xcode/iOS SDK, SwiftPM, CI host policy | **Active — local check pending** |
 | 02 | Dependency policy and package selection | Package inventory, versions, compatibility, license, maintenance, security, upgrade policy | Not started |
 | 03 | Architecture and project structure | Feature boundaries, layers, dependency direction, shared code, naming and file conventions | Not started |
 | 04 | App bootstrap and lifecycle | Startup, app composition, lifecycle, configuration, error boundaries | Not started |

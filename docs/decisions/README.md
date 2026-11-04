@@ -14,5 +14,6 @@ Status meanings:
 | [ADR-0004](0004-platform-support-floor.md) | Android API 24 and iOS 15 initial OS floors | Accepted |
 | [ADR-0005](0005-system-preferences.md) | System locale/theme defaults with independent overrides | Accepted |
 | [ADR-0006](0006-project-license.md) | MIT license for original repository material | Accepted |
+| [ADR-0007](0007-toolchain-baseline.md) | Flutter 3.47.9 and aligned native toolchain baseline | Accepted |
 
 Use the [decision record template](../templates/DECISION_RECORD.md). Assign sequential IDs and never recycle them. Supersede accepted decisions rather than silently changing their meaning. Link primary sources and record when they were checked. Reserve ADRs for material decisions with meaningful trade-offs.

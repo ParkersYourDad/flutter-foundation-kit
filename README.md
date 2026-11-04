@@ -2,7 +2,7 @@
 
 A reusable, project-neutral Flutter application starter for Android and iOS.
 
-**Project status:** Product scope accepted. Platform/toolchain research is next. This repository is not yet a released or ready-to-use application template.
+**Project status:** Product scope closed. Toolchain baseline selected; one local Windows environment check remains before Phase 01 closes. This repository is not yet a released or ready-to-use application template.
 
 ## Purpose
 
@@ -10,19 +10,27 @@ A maintained GitHub template repository containing a runnable Flutter applicatio
 
 ## Confirmed direction
 
-- Flutter and Dart; Android and iOS only.
-- GitHub Template Repository as the delivery model; enable the template flag only after the first release candidate passes release checks.
-- Forui-first, selective UI component adoption: use, customize, extend, or build only to close a verified gap.
+- Flutter 3.47.9 stable / bundled Dart 3.13.7 baseline.
+- Android and iOS only.
+- GitHub Template Repository as the delivery model; activate only after the first release candidate passes release checks.
+- Forui-first, selective UI component adoption.
 - Neutral, premium-minimal, low-clutter visual defaults, replaceable through design tokens.
-- Arabic and English baseline; device locale by default, with an independent persisted user override.
-- System theme by default, with an independent persisted System/Light/Dark override.
+- Arabic and English baseline; device locale by default, with independent persisted user override.
+- System theme by default, with independent persisted System/Light/Dark override.
 - No backend, authentication, remote database, analytics, advertising, push, AI, payments, or business-specific logic by default.
 - No package-driven application source generation by default.
 - MIT license for original repository material; third-party assets retain their own licenses.
 
-## Initial platform floor
+## Current workstream
 
-Android API 24 and iOS 15, matching the Flutter 3.47 supported mobile platform floor documented on 2026-11-04. Required plugins may force a higher floor. Store target SDK and build-tool requirements are separate and must be revalidated before releases.
+**Phase 01 — Platform and toolchain.**
+
+- Flutter/Dart: 3.47.9 stable / 3.13.7.
+- Android: Flutter-generated toolchain baseline documented in [Toolchain Baseline](docs/platform/TOOLCHAIN_BASELINE.md).
+- iOS: Xcode 26.6 and Swift Package Manager default.
+- Local Windows environment check: pending.
+
+See [ADR-0007](docs/decisions/0007-toolchain-baseline.md).
 
 ## Workstream status
 
@@ -48,12 +56,23 @@ Android API 24 and iOS 15, matching the Flutter 3.47 supported mobile platform f
 - [Product scope](docs/charter/PRODUCT_SCOPE.md)
 - [Working agreement](docs/operating-model/WORKFLOW.md)
 - [System map](docs/architecture/SYSTEM_MAP.md)
+- [Toolchain baseline](docs/platform/TOOLCHAIN_BASELINE.md)
 - [Decision register](docs/decisions/README.md)
 - [Phase 00 closure record](docs/workstreams/PHASE_00_CLOSURE.md)
 
+## Local environment check
+
+Run this once from the repository root on Windows:
+
+\`\`\`powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\check_environment.ps1
+\`\`\`
+
+The script is read-only. It reports installed versions and \`flutter doctor -v\`; it does not install or modify anything.
+
 ## Template activation
 
-The template flag will be enabled only after the runnable Flutter scaffold, automated checks, documentation, and first-release acceptance checklist are complete. The template feature must not expose an unfinished starter for reuse.
+The template flag will be enabled only after the runnable Flutter scaffold, automated checks, documentation, and first-release acceptance checklist are complete.
 
 ## License
 
