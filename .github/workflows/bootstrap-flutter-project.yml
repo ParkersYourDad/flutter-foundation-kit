@@ -56,7 +56,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          flutter create --empty --platforms=android,ios --org com.foundationkit --project-name foundation_kit "$RUNNER_TEMP/foundation_kit"
+          flutter create --platforms=android,ios --org com.foundationkit --project-name foundation_kit "$RUNNER_TEMP/foundation_kit"
           python3 - <<'PY'
           from pathlib import Path
           import re
