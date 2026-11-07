@@ -26,35 +26,15 @@ MaterialApp(
 )
 \`\`\`
 
-Provide an app-specific semantic palette without changing shared components:
-
-\`\`\`dart
-MaterialApp(
-  theme: FoundationTheme.light(
-    colors: const FoundationColors(
-      primary: Color(0xFF3157D5),
-      onPrimary: Color(0xFFFFFFFF),
-      secondary: Color(0xFFE8ECFA),
-      onSecondary: Color(0xFF18244A),
-      surface: Color(0xFFFFFFFF),
-      surfaceSubtle: Color(0xFFF5F6FA),
-      onSurface: Color(0xFF171923),
-      onSurfaceMuted: Color(0xFF626779),
-      outline: Color(0xFFDDE0EA),
-      danger: Color(0xFFB42318),
-      onDanger: Color(0xFFFFFFFF),
-      focus: Color(0xFF3157D5),
-    ),
-  ),
-)
-\`\`\`
+Provide an app-specific semantic palette without changing shared components.
 
 ## Current API
 
-- FoundationSpacing, FoundationRadii, FoundationTypography, FoundationMotion
-- FoundationColors and FoundationTheme
-- FoundationSurface
-- FoundationButton
+- Tokens: FoundationSpacing, FoundationRadii, FoundationTypography, FoundationMotion
+- Theme: FoundationColors, FoundationTheme
+- Components: FoundationSurface, FoundationButton, FoundationTextField
+
+FoundationTextField uses Flutter's TextFormField for keyboard, focus, autofill, and form integration while applying the package's own semantic visual treatment. The package does not own or dispose caller-supplied controllers or focus nodes.
 
 Components use semantic theme values. Do not add product-specific colors, copy, routes, business rules, or dependencies to this package.
 

@@ -18,6 +18,7 @@ class FoundationButton extends StatelessWidget {
     this.trailing,
     this.isLoading = false,
     this.semanticLabel,
+    this.loadingSemanticValue,
     super.key,
   });
 
@@ -29,6 +30,7 @@ class FoundationButton extends StatelessWidget {
   final Widget? trailing;
   final bool isLoading;
   final String? semanticLabel;
+  final String? loadingSemanticValue;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class FoundationButton extends StatelessWidget {
       button: true,
       enabled: isEnabled,
       label: semanticLabel ?? label,
-      value: isLoading ? 'Loading' : null,
+      value: isLoading ? loadingSemanticValue : null,
       child: ExcludeSemantics(
         child: Material(
           type: MaterialType.transparency,
