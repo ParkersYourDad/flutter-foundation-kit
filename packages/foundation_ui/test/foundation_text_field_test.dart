@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:foundation_ui/foundation_ui.dart';
 
 void main() {
-  testWidgets('renders labels and reports input changes', (tester) async {
+  testWidgets('renders its configuration and reports input changes', (tester) async {
     String? changedValue;
 
     await tester.pumpWidget(
@@ -19,8 +19,9 @@ void main() {
       ),
     );
 
-    expect(find.text('Email'), findsOneWidget);
-    expect(find.text('name@example.com'), findsOneWidget);
+    final field = tester.widget<TextFormField>(find.byType(TextFormField));
+    expect(field.decoration?.labelText, 'Email');
+    expect(field.decoration?.hintText, 'name@example.com');
 
     await tester.enterText(find.byType(TextFormField), 'person@example.com');
     expect(changedValue, 'person@example.com');

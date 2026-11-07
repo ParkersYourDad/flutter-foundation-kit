@@ -94,7 +94,6 @@ class DesignSystemShowcasePage extends StatelessWidget {
             hintText: 'Enter your password',
             obscureText: true,
             textInputAction: TextInputAction.done,
-            suffix: Icon(Icons.visibility_outlined),
           ),
           const SizedBox(height: FoundationSpacing.xxxl),
           Text('Surfaces', style: Theme.of(context).textTheme.titleLarge),
