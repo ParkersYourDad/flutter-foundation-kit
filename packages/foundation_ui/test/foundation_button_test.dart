@@ -15,6 +15,7 @@ void main() {
             label: 'Continue',
             onPressed: onPressed,
             isLoading: isLoading,
+            loadingSemanticValue: 'Loading',
           ),
         ),
       ),
@@ -23,7 +24,10 @@ void main() {
 
   Finder getButtonSemantics() {
     return find.byWidgetPredicate(
-      (widget) => widget is Semantics && widget.properties.button == true,
+      (widget) =>
+          widget is Semantics &&
+          widget.properties.button == true &&
+          widget.properties.label == 'Continue',
     );
   }
 
@@ -56,7 +60,7 @@ void main() {
     );
   });
 
-  testWidgets('exposes loading state and progress indicator', (tester) async {
+  testWidgets('exposes localized loading state and progress indicator', (tester) async {
     final semantics = tester.ensureSemantics();
     addTearDown(semantics.dispose);
 

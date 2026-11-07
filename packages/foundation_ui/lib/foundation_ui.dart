@@ -1,5 +1,3 @@
-library foundation_ui;
-
 export 'src/components/foundation_button.dart';
 export 'src/components/foundation_surface.dart';
 export 'src/theme/foundation_colors.dart';
