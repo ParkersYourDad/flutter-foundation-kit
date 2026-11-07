@@ -1,6 +1,6 @@
 # ADR-0002: Flutter, Dart, and UI Component Direction
 
-- **Status:** Superseded by ADR-0008
+- **Status:** Accepted
 - **Date:** 2026-11-04
 - **Decision owners:** Repository owner
 
@@ -8,10 +8,16 @@
 
 The kit needs a reusable mobile application foundation and should avoid rebuilding established UI primitives without a demonstrated need.
 
-## Historical decision (superseded)
+## Decision
 
-- Flutter is the application framework and Dart is the implementation language.
-- The original Forui-first direction is no longer active. ADR-0008 supersedes the UI foundation decision and establishes a first-party Flutter SDK-based design system.
+- Use **Flutter** as the application framework and **Dart** as the implementation language.
+- Use **Forui as the primary UI component foundation**, with a selective adoption strategy:
+  1. use a component when it already satisfies the requirement;
+  2. customize it through supported extension points when needed;
+  3. extend it when the existing component is close but incomplete;
+  4. build a new component only when a verified gap remains.
+
+Forui is a strategic direction, not blanket approval of every widget, API, version, transitive dependency, or native behavior.
 
 ## Consequences
 
@@ -20,6 +26,6 @@ The kit needs a reusable mobile application foundation and should avoid rebuildi
 - The kit must avoid wrapping every third-party widget in redundant abstractions.
 - Package version, license, maintenance, Flutter/Dart constraints, Android/iOS support, and migration risk remain subject to evidence-based review.
 
-## Supersession
+## Revisit conditions
 
-This decision was superseded on 2026-11-07 by [ADR-0008](0008-first-party-design-system.md) after the product owner chose a project-owned component system. Do not add Forui to the baseline or new implementation.
+Reconsider if Forui becomes incompatible, unmaintained, unsuitable for a required capability, or imposes unacceptable upgrade or accessibility costs. Evaluate alternatives with the same evidence standard.

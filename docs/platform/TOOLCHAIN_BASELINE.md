@@ -107,9 +107,11 @@ Runner images are periodically updated. Pin Flutter and explicitly select Xcode;
 
 GitHub Actions action versions, workflow permissions, caching, artifact handling, and dependency pinning are defined in the developer-experience/CI workstream. Do not add workflows in this phase before that workstream.
 
-## 5. UI dependency boundary
+## 5. Forui compatibility signal
 
-The baseline does not require a third-party UI component package. The visual foundation and shared components are owned by this repository and implemented with Flutter SDK primitives. Any future non-UI dependency is evaluated in the dependency workstream; a UI package proposal would require a superseding decision and a demonstrated capability gap.
+The current pub.dev listing shows Forui 0.27.7, and Forui 0.26.0+ requires Flutter 3.47.0 or later. Flutter 3.47.9 satisfies that minimum.
+
+This is a compatibility check only, not final dependency approval. Forui's exact version, transitive dependency review, license review, release policy, and component-by-component adoption remain in the dependency and Forui workstreams. Forui is pre-1.0; do not assume that a caret constraint automatically adopts later minor releases.
 
 ## 6. Reproducibility rules
 
@@ -145,6 +147,7 @@ Phase 01 can close after:
 - [x] Android minimum/compile/target SDK values are separated.
 - [x] iOS minimum, Xcode, SDK, host, and App Store requirements are separated.
 - [x] SwiftPM default and CocoaPods fallback risk are documented.
+- [x] Forui's minimum Flutter compatibility is checked.
 - [x] CI host policy and version pinning policy are documented.
 - [ ] GitHub Actions successfully generates the official Android/iOS Flutter scaffold, passes analysis/tests, builds Android debug, and builds iOS without code signing.
 

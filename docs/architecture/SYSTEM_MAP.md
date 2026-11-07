@@ -12,8 +12,8 @@ Each workstream defines its boundaries, decisions, implementation, verification,
 | 02 | Dependency policy and package selection | Package inventory, versions, compatibility, license, maintenance, security, upgrade policy | Not started |
 | 03 | Architecture and project structure | Feature boundaries, layers, dependency direction, shared code, naming and file conventions | Not started |
 | 04 | App bootstrap and lifecycle | Startup, app composition, lifecycle, configuration, error boundaries | Not started |
-| 05 | Flutter SDK UI foundation | SDK primitive policy, app shell boundary, semantics, focus and interaction foundations | Not started |
-| 06 | First-party design system and theming | Tokens, typography, semantic colors, theme modes, component contracts, branding flexibility | Not started |
+| 05 | UI foundation and Forui integration | Widget inventory, adoption/customization/extension/build rules, Material/Cupertino boundaries | Not started |
+| 06 | Design system and theming | Tokens, typography, semantic colors, theme modes, component styling, branding flexibility | Not started |
 | 07 | Navigation and routing | Route model, nested navigation, back behavior, deep links, modal navigation | Not started |
 | 08 | State, async behavior, and dependency injection | Local/shared state, async flows, provider lifecycle, dependency ownership | Not started |
 | 09 | Localization, preferences, and persistence | Locale, RTL/LTR, user overrides, storage boundaries, migrations | Not started |

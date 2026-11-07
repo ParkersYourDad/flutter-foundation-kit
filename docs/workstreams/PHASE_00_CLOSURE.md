@@ -74,3 +74,15 @@ Sources checked 2026-11-04. Revalidate version-sensitive facts in implementation
 Product boundaries are sufficiently defined to start platform/toolchain research. No Flutter application code or dependency version was selected in this phase; those decisions remain in their dedicated workstreams.
 
 Phase 00 is closed. Reopen only under the conditions in [WORKFLOW.md](../operating-model/WORKFLOW.md).
+
+
+## Amendment — 2026-11-07
+
+The original Phase 00 UI direction was selective Forui-first adoption. The product owner subsequently selected a fully project-owned design system. This is a controlled product decision, not an undocumented implementation change:
+
+- ADR-0002 is superseded by [ADR-0008 — First-Party Flutter Design System](../decisions/0008-first-party-design-system.md).
+- The active product scope now names a Flutter SDK-based first-party UI foundation.
+- No third-party UI kit is part of the default visual foundation.
+- The delivery model, platform scope, localization defaults, theme defaults, security/privacy scope, and MIT license remain unchanged.
+
+This amendment records the accepted change; Phase 00 is not otherwise reopened.

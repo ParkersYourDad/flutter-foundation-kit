@@ -58,7 +58,7 @@ These are minimum device OS versions, not compile SDK or store target API versio
 | Platforms | Android and iOS only |
 | Delivery | GitHub Template Repository |
 | Product form | Project-neutral runnable application starter |
-| UI direction | First-party Flutter SDK-based design system; no third-party visual UI framework |
+| UI direction | Selective Forui-first component foundation |
 | Component method | Use → customize → extend → build only for a verified gap |
 | Localization | Arabic and English in baseline |
 | Locale default | Device locale; independently persisted user override |
@@ -68,7 +68,7 @@ These are minimum device OS versions, not compile SDK or store target API versio
 | Code generation | No package-driven app source generation by default |
 | License | MIT for original repository material; external assets keep their licenses |
 
-The first-party design system is the visual and component source of truth. Flutter SDK primitives are the implementation base; third-party visual UI kits are not part of the baseline.
+Forui is a strategic direction, not blanket approval of every widget, API, release, native dependency, or component.
 
 ## 5. Core template scope
 
@@ -76,7 +76,7 @@ The runnable template is expected to include these foundations, with implementat
 
 1. **App foundation:** startup/bootstrap, lifecycle, configuration boundaries, and intentional first-launch/loading behavior.
 2. **Project structure:** pragmatic feature-oriented organization, clear responsibility boundaries, and no unnecessary layers.
-3. **UI foundation:** first-party components built on Flutter SDK primitives. Material and Cupertino APIs may be used deliberately as low-level platform/behavior primitives, but no third-party UI kit defines the visual foundation. Shared wrappers must preserve the project's tokens, accessibility, and interaction contract.
+3. **UI foundation:** Forui integration and a reviewed set of shared components; native Flutter, Material, or Cupertino primitives may be used deliberately when suitable.
 4. **Design system:** semantic tokens, typography, spacing, shape, borders, themes, and replaceable neutral defaults.
 5. **Navigation and state foundations:** selected after current documentation and compatibility/trade-off review.
 6. **Localization and preferences:** Arabic/English, RTL/LTR, system defaults, independent persisted overrides, and local preference persistence.
@@ -195,11 +195,11 @@ Original repository material is licensed under MIT. This permits reuse and modif
 The following remain open and must be finalized before relevant implementation:
 - exact Flutter stable version and Dart SDK constraint;
 - Android Gradle Plugin, Gradle, Kotlin, JDK, Android SDK, NDK, and Xcode versions;
-- exact non-UI package inventory and dependency versions;
+- exact package inventory, Forui version, and other dependency versions;
 - state management, routing, DI, and persistence selections;
 - final project structure and architecture layers;
 - exact design tokens, typography scale, and font/assets;
-- first-party component inventory and staged component acceptance;
+- Forui component-by-component adoption/customization/extension/build inventory;
 - CI action versions, runner images, and secret handling;
 - release automation and signing workflow.
 
