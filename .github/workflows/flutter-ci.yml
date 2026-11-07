@@ -2,12 +2,14 @@ name: Flutter CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, "feature/**"]
     paths:
       - "android/**"
       - "ios/**"
       - "lib/**"
+      - "packages/**"
       - "test/**"
+      - "docs/**"
       - "pubspec.yaml"
       - "pubspec.lock"
       - "analysis_options.yaml"
@@ -17,7 +19,9 @@ on:
       - "android/**"
       - "ios/**"
       - "lib/**"
+      - "packages/**"
       - "test/**"
+      - "docs/**"
       - "pubspec.yaml"
       - "pubspec.lock"
       - "analysis_options.yaml"
@@ -27,7 +31,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: flutter-ci
+  group: flutter-ci-\${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -48,6 +52,12 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze --fatal-infos
       - run: flutter test
+      - run: flutter pub get
+        working-directory: packages/foundation_ui
+      - run: flutter analyze --fatal-infos
+        working-directory: packages/foundation_ui
+      - run: flutter test
+        working-directory: packages/foundation_ui
       - run: flutter build apk --debug
 
   ios:
@@ -67,4 +77,10 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze --fatal-infos
       - run: flutter test
+      - run: flutter pub get
+        working-directory: packages/foundation_ui
+      - run: flutter analyze --fatal-infos
+        working-directory: packages/foundation_ui
+      - run: flutter test
+        working-directory: packages/foundation_ui
       - run: flutter build ios --no-codesign --debug
