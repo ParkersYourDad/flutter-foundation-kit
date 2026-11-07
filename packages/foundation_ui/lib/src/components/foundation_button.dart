@@ -46,6 +46,7 @@ class FoundationButton extends StatelessWidget {
       FoundationButtonSize.regular => FoundationSpacing.lg,
       FoundationButtonSize.large => FoundationSpacing.xxl,
     };
+    final radius = BorderRadius.circular(FoundationRadii.md);
 
     return Semantics(
       button: true,
@@ -54,75 +55,77 @@ class FoundationButton extends StatelessWidget {
       value: isLoading ? 'Loading' : null,
       child: ExcludeSemantics(
         child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: isEnabled ? onPressed : null,
-            borderRadius: BorderRadius.circular(FoundationRadii.md),
-            focusColor: colors.focus.withValues(alpha: 0.12),
-            hoverColor: foreground.withValues(alpha: 0.06),
-            splashColor: foreground.withValues(alpha: 0.12),
-            highlightColor: foreground.withValues(alpha: 0.06),
-            child: Container(
-              constraints: BoxConstraints(minHeight: minHeight),
-              padding: EdgeInsets.symmetric(
-                horizontal: horizontalPadding,
-                vertical: FoundationSpacing.sm,
-              ),
-              decoration: BoxDecoration(
-                color: background,
-                borderRadius: BorderRadius.circular(FoundationRadii.md),
-                border: variant == FoundationButtonVariant.outline
-                    ? Border.all(
-                        color: isEnabled
-                            ? colors.outline
-                            : colors.outline.withValues(alpha: 0.5),
-                      )
-                    : null,
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (isLoading)
-                    SizedBox(
-                      width: FoundationSpacing.lg,
-                      height: FoundationSpacing.lg,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: foreground,
-                      ),
+          type: MaterialType.transparency,
+          child: Ink(
+            decoration: BoxDecoration(
+              color: background,
+              borderRadius: radius,
+              border: variant == FoundationButtonVariant.outline
+                  ? Border.all(
+                      color: isEnabled
+                          ? colors.outline
+                          : colors.outline.withValues(alpha: 0.5),
                     )
-                  else if (leading != null) ...[
-                    IconTheme(
-                      data: IconThemeData(
-                        color: foreground,
-                        size: FoundationSpacing.lg,
+                  : null,
+            ),
+            child: InkWell(
+              onTap: isEnabled ? onPressed : null,
+              borderRadius: radius,
+              focusColor: colors.focus.withValues(alpha: 0.12),
+              hoverColor: foreground.withValues(alpha: 0.06),
+              splashColor: foreground.withValues(alpha: 0.12),
+              highlightColor: foreground.withValues(alpha: 0.06),
+              child: Container(
+                constraints: BoxConstraints(minHeight: minHeight),
+                padding: EdgeInsets.symmetric(
+                  horizontal: horizontalPadding,
+                  vertical: FoundationSpacing.sm,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (isLoading)
+                      SizedBox(
+                        width: FoundationSpacing.lg,
+                        height: FoundationSpacing.lg,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: foreground,
+                        ),
+                      )
+                    else if (leading != null) ...[
+                      IconTheme(
+                        data: IconThemeData(
+                          color: foreground,
+                          size: FoundationSpacing.lg,
+                        ),
+                        child: leading!,
                       ),
-                      child: leading!,
-                    ),
-                    const SizedBox(width: FoundationSpacing.sm),
-                  ],
-                  Flexible(
-                    child: Text(
-                      label,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            color: foreground,
-                          ),
-                    ),
-                  ),
-                  if (!isLoading && trailing != null) ...[
-                    const SizedBox(width: FoundationSpacing.sm),
-                    IconTheme(
-                      data: IconThemeData(
-                        color: foreground,
-                        size: FoundationSpacing.lg,
+                      const SizedBox(width: FoundationSpacing.sm),
+                    ],
+                    Flexible(
+                      child: Text(
+                        label,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                              color: foreground,
+                            ),
                       ),
-                      child: trailing!,
                     ),
+                    if (!isLoading && trailing != null) ...[
+                      const SizedBox(width: FoundationSpacing.sm),
+                      IconTheme(
+                        data: IconThemeData(
+                          color: foreground,
+                          size: FoundationSpacing.lg,
+                        ),
+                        child: trailing!,
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
           ),
