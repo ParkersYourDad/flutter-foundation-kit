@@ -109,7 +109,7 @@ jobs:
             fi
           done
           git add android ios lib test pubspec.yaml analysis_options.yaml .metadata
-git add -f pubspec.lock
+          git add -f pubspec.lock
           if git diff --cached --quiet; then
             echo "No generated project changes to commit."
             exit 0
