@@ -46,7 +46,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          set +e
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platforms;android-36" "build-tools;36.0.0" "ndk;28.2.13676358"
+          sdkmanager_status=${PIPESTATUS[1]}
+          set -e
+          exit "$sdkmanager_status"
 
       - name: Generate official Android and iOS scaffold
         shell: bash

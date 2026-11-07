@@ -13,7 +13,7 @@ A maintained GitHub template repository containing a runnable Flutter applicatio
 - Flutter 3.47.9 stable / bundled Dart 3.13.7 baseline.
 - Android and iOS only.
 - GitHub Template Repository as the delivery model; activate only after the first release candidate passes release checks.
-- Forui-first, selective UI component adoption.
+- First-party Flutter SDK-based UI foundation and component library; no external UI kit as the visual foundation.
 - Neutral, premium-minimal, low-clutter visual defaults, replaceable through design tokens.
 - Arabic and English baseline; device locale by default, with independent persisted user override.
 - System theme by default, with independent persisted System/Light/Dark override.
@@ -39,7 +39,7 @@ See [ADR-0007](docs/decisions/0007-toolchain-baseline.md).
 3. Dependency policy and package selection
 4. Architecture and project structure
 5. App bootstrap and lifecycle
-6. UI foundation and Forui integration
+6. Flutter SDK UI foundation and first-party component strategy
 7. Design system and theming
 8. Navigation and routing
 9. State, async behavior, and dependency injection
@@ -59,6 +59,7 @@ See [ADR-0007](docs/decisions/0007-toolchain-baseline.md).
 - [Toolchain baseline](docs/platform/TOOLCHAIN_BASELINE.md)
 - [Decision register](docs/decisions/README.md)
 - [Phase 00 closure record](docs/workstreams/PHASE_00_CLOSURE.md)
+- [ADR-0008 — First-party design system](docs/decisions/0008-first-party-design-system.md)
 
 ## Local environment check
 
